@@ -18,6 +18,7 @@ import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
@@ -122,8 +123,9 @@ public class AlexaProxyServlet extends HttpServlet {
                 }
             }
 
-            ResponseEntity<SpeechletResponseEnvelope> speechletResponse = this.restTemplate.postForEntity(this.endpoint, requestEnvelope,
-                    SpeechletResponseEnvelope.class);
+            HttpEntity<byte[]> requestEntity = new HttpEntity<>(serializedSpeechletRequest);
+            ResponseEntity<SpeechletResponseEnvelope> speechletResponse = this.restTemplate.postForEntity(
+                    this.endpoint, requestEntity, SpeechletResponseEnvelope.class);
             if (speechletResponse.getStatusCode().is2xxSuccessful() && speechletResponse.hasBody()) {
                 byte[] outputBytes = speechletResponse.getBody().toJsonBytes();
                 httpResponse.setContentType("application/json");
