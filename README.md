@@ -3,12 +3,12 @@ Spring boot app that works as a proxy between Amazon Alexa in the cloud and
 a local running smart home server running an Alexa Skill.
 It works with all Alexa powered devices, such as the Amazon Echo, Amazon Tap and Amazon Echo Dot.
 
-The proxy will check several things before forwarding the request:
-A. It must be a POST request (required)
-B. It must come from the Amazon Alexa cloud (optional)
-C. It's timestamp can't be too far off (optional)
-D. It must contain a whitelisted application id (optional)
-E. It must contain a whitelisted user id (optional)
+The proxy will check several things before forwarding the request:  
+A. It must be a POST request (required)  
+B. It must come from the Amazon Alexa cloud (optional)  
+C. It's timestamp can't be too far off (optional)  
+D. It must contain a whitelisted application id (optional)  
+E. It must contain a whitelisted user id (optional)  
 
 # Benefits
 - Exposes one single point of entry for the outside world to your local network
@@ -17,10 +17,10 @@ E. It must contain a whitelisted user id (optional)
 
 # FAQ
 Q: How do I run the proxy?  
-A:
-1. Clone the project locally
-2. Copy and edit one of the example properties files in src/test/resources
-3. Run with: mvn exec:java -Dexec.mainClass="com.programyourhome.alexa.proxy.AlexaProxySpringBootApplication" -Dalexa.proxy.properties.location=path/to/alexa.proxy.properties
+A:  
+1. Clone the project locally  
+2. Copy and edit one of the example properties files in src/test/resources  
+3. Run with: mvn exec:java -Dexec.mainClass="com.programyourhome.alexa.proxy.AlexaProxySpringBootApplication" -Dalexa.proxy.properties.location=path/to/alexa.proxy.properties  
 
 Q: How do I get Amazon to talk to the proxy?  
 A: For Amazon to accept a connection to a skill, it must be served on HTTPS. As long as you have it running in development mode (which you probably want anyway for a
